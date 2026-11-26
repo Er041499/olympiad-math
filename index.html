@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Olympiad Math Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Literata:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EEF2F4;--ink:#14213D;--grid:#CBD8DE;--blue:#2B4EFF;--mark:#FFE45C;--card:#FFFFFF;--muted:#4A5873;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#10172A;--ink:#E8EEF8;--grid:#1F2A47;--blue:#8FA6FF;--mark:#5C4F00;--card:#18213A;--muted:#A3B0CC}}
+:root[data-theme="dark"]{--paper:#10172A;--ink:#E8EEF8;--grid:#1F2A47;--blue:#8FA6FF;--mark:#5C4F00;--card:#18213A;--muted:#A3B0CC}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background-color:var(--paper);color:var(--ink);font:400 18px/1.65 'Literata',Georgia,serif;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px}
+h1,h2,h3,.sans{font-family:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;line-height:1.1;margin:0}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1020px;margin:0 auto;padding:0 22px}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 0;flex-wrap:wrap;gap:10px}
+header .logo{font-weight:800;font-size:1.15rem}
+nav a{margin-left:18px;color:var(--ink);text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:500}
+nav a:hover{text-decoration:underline}
+.hero{padding:40px 0 70px;display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:800;letter-spacing:-.02em}
+.hero p.lead{max-width:34ch;color:var(--muted);margin:18px 0 26px}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);padding:12px 22px;border-radius:6px;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700}
+.btn:hover{background:var(--blue);color:#fff}
+.problem{background:var(--card);border:2px solid var(--ink);border-radius:4px;padding:26px;box-shadow:8px 8px 0 var(--blue)}
+.problem .tag{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.9rem;background:var(--mark);color:#14213D;display:inline-block;padding:2px 10px;margin-bottom:14px}
+:root[data-theme="dark"] .problem .tag{color:#FFE45C}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .problem .tag{color:#FFE45C}}
+.problem h2{font-size:1.45rem;margin-bottom:16px}
+.hints{list-style:none;padding:0;margin:0 0 16px}
+.hints li{border-left:4px solid var(--blue);padding:4px 0 4px 14px;margin:10px 0;animation:in .3s ease}
+@keyframes in{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.problem button{font:700 1rem 'Bricolage Grotesque',sans-serif;background:transparent;color:var(--ink);border:2px solid var(--ink);padding:9px 16px;border-radius:6px;cursor:pointer}
+.problem button:hover{background:var(--ink);color:var(--paper)}
+.problem button:disabled{opacity:.45;cursor:default;background:transparent;color:var(--ink)}
+section{padding:56px 0}
+section h2.title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
+section .sub{color:var(--muted);max-width:52ch;margin:0 0 30px}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.topic{background:var(--card);border:2px solid var(--ink);padding:20px;border-radius:4px}
+.topic h3{font-size:1.3rem;margin-bottom:8px}
+.topic p{margin:0 0 10px;font-size:.98rem;color:var(--muted)}
+.topic ul{margin:0;padding-left:18px;font-size:.95rem}
+.path{list-style:none;margin:0;padding:0;border-left:3px solid var(--ink);margin-left:12px}
+.path li{position:relative;padding:0 0 28px 30px}
+.path li::before{content:"";position:absolute;left:-11px;top:6px;width:19px;height:19px;background:var(--mark);border:3px solid var(--ink);border-radius:50%}
+.path h3{font-size:1.25rem;margin-bottom:4px}
+.path p{margin:0;color:var(--muted);max-width:56ch}
+details{background:var(--card);border:2px solid var(--ink);border-radius:4px;margin-bottom:12px}
+summary{cursor:pointer;padding:14px 18px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;list-style-position:inside}
+details .body{padding:0 18px 16px;border-top:2px dashed var(--grid)}
+details .body p{margin:12px 0 0}
+.lvl{font-weight:500;color:var(--muted);margin-left:8px}
+footer{border-top:2px solid var(--ink);padding:30px 0 50px;color:var(--muted);font-size:.95rem}
+.themebtn{font:500 .9rem 'Bricolage Grotesque',sans-serif;background:none;border:2px solid var(--ink);color:var(--ink);border-radius:6px;padding:4px 10px;cursor:pointer;margin-left:18px}
+@media (max-width:760px){.hero{grid-template-columns:1fr;padding-bottom:40px}nav a:first-child{margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo sans">Olympiad Math Notebook</div>
+  <nav aria-label="Main"><a href="#topics">Topics</a><a href="#path">Learning path</a><a href="#practice">Practice</a><button class="themebtn" id="theme" type="button">Dark / light</button></nav>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <h1>Learn to solve problems nobody showed you how to solve.</h1>
+    <p class="lead">Free lessons and practice problems for students preparing for math olympiads. Start with one problem on the right.</p>
+    <a class="btn" href="#path">Start the learning path</a>
+  </div>
+  <div class="problem" aria-live="polite">
+    <span class="tag">Try it now</span>
+    <h2>Show that the sum of any five consecutive integers is divisible by 5.</h2>
+    <ol class="hints" id="hints"></ol>
+    <button type="button" id="hintBtn">Show a hint</button>
+  </div>
+</div>
+
+<section id="topics">
+  <h2 class="title">Four topics, one habit: look for structure</h2>
+  <p class="sub">Every olympiad problem falls into one of these areas. Learn the core ideas of each before mixing them.</p>
+  <div class="topics">
+    <div class="topic"><h3>Number theory</h3><p>Divisibility, primes and remainders.</p><ul><li>Modular arithmetic</li><li>GCD and Euclid’s algorithm</li><li>Diophantine equations</li></ul></div>
+    <div class="topic"><h3>Algebra</h3><p>Inequalities, functions and polynomials.</p><ul><li>AM–GM and Cauchy–Schwarz</li><li>Functional equations</li><li>Vieta’s formulas</li></ul></div>
+    <div class="topic"><h3>Combinatorics</h3><p>Counting, invariants and clever arguments.</p><ul><li>Pigeonhole principle</li><li>Invariants and colorings</li><li>Induction</li></ul></div>
+    <div class="topic"><h3>Geometry</h3><p>Angles, circles and proofs with diagrams.</p><ul><li>Angle chasing</li><li>Power of a point</li><li>Similar triangles</li></ul></div>
+  </div>
+</section>
+
+<section id="path">
+  <h2 class="title">A learning path in four stages</h2>
+  <p class="sub">Move on when you can solve most problems of a stage without hints.</p>
+  <ol class="path">
+    <li><h3>Build the toolkit</h3><p>School algebra, divisibility rules, basic counting and angle facts. Solve many short problems.</p></li>
+    <li><h3>Learn the classic ideas</h3><p>Pigeonhole, induction, modular arithmetic, AM–GM. One idea per week, five problems each.</p></li>
+    <li><h3>Write full proofs</h3><p>Practice explaining every step. A correct idea with a gap in the proof loses points.</p></li>
+    <li><h3>Mix and compete</h3><p>Work through past national contests under time limits, then review every mistake.</p></li>
+  </ol>
+</section>
+
+<section id="practice">
+  <h2 class="title">Practice problems</h2>
+  <p class="sub">Try each problem on paper first. Open the solution only after a real attempt.</p>
+  <details><summary>Remainders of squares <span class="lvl">Beginner · Number theory</span></summary><div class="body"><p><b>Problem.</b> Prove that a perfect square leaves remainder 0 or 1 when divided by 4.</p><p><b>Solution.</b> An integer is either 2k or 2k+1. Then (2k)² = 4k², remainder 0. And (2k+1)² = 4k² + 4k + 1 = 4(k² + k) + 1, remainder 1.</p></div></details>
+  <details><summary>Two people with equal handshakes <span class="lvl">Beginner · Combinatorics</span></summary><div class="body"><p><b>Problem.</b> At a party of 10 or more people, show that at least two people shook the same number of hands.</p><p><b>Solution.</b> With n people, handshake counts range from 0 to n−1. But 0 and n−1 cannot both occur, since someone who shook everyone’s hand rules out someone who shook none. So only n−1 values are available for n people, and the pigeonhole principle gives a repeat.</p></div></details>
+  <details><summary>A first inequality <span class="lvl">Intermediate · Algebra</span></summary><div class="body"><p><b>Problem.</b> For positive a and b, prove that a/b + b/a ≥ 2.</p><p><b>Solution.</b> Multiply by ab: the claim becomes a² + b² ≥ 2ab. This is equivalent to (a − b)² ≥ 0, which is always true.</p></div></details>
+  <details><summary>Angle in a semicircle <span class="lvl">Beginner · Geometry</span></summary><div class="body"><p><b>Problem.</b> Point C lies on a circle with diameter AB. Prove that angle ACB is 90°.</p><p><b>Solution.</b> Let O be the center. Triangles OAC and OBC are isosceles, so the base angles are equal: call them x and y. The angles of triangle ABC sum to x + y + (x + y) = 180°, so x + y = 90°, which is angle ACB.</p></div></details>
+</section>
+</main>
+
+<footer>
+  <p>Olympiad Math Notebook. A free resource for students learning competition mathematics. Questions or problem suggestions? Add your contact email here.</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var hints=[
+    "Name the middle number n. What are the other four numbers in terms of n?",
+    "The five numbers are n−2, n−1, n, n+1, n+2.",
+    "Add them up. Notice that the −2 and +2 cancel, and so do −1 and +1.",
+    "The sum is 5n, which is a multiple of 5. Done."
+  ];
+  var list=document.getElementById('hints'),btn=document.getElementById('hintBtn'),i=0;
+  btn.addEventListener('click',function(){
+    if(i<hints.length){
+      var li=document.createElement('li');li.textContent=hints[i];list.appendChild(li);i++;
+      if(i===hints.length){btn.textContent='All hints shown';btn.disabled=true}
+      else if(i===hints.length-1){btn.textContent='Show the solution'}
+    }
+  });
+  document.getElementById('theme').addEventListener('click',function(){
+    var r=document.documentElement,dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var cur=r.getAttribute('data-theme')||(dark?'dark':'light');
+    r.setAttribute('data-theme',cur==='dark'?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
